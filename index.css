@@ -1,0 +1,195 @@
+html {
+    scroll-behavior: smooth;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#idHeader{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(193, 192, 192);
+    position: fixed;
+    font-size: 5vh;
+    z-index: 1000;
+    align-items: center;
+}
+
+#topAnchor{
+    position: relative;
+    top: 0;
+    height: 70px;
+}
+
+.page_title{
+    margin: 0;
+    padding: 0;
+    left: 10px;
+    top: 10px;;
+    position: absolute;
+}
+
+#btnPanier{
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    color: black;
+    background-color: yellowgreen;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+#btnPanier:hover{
+    background-color: greenyellow;
+    transform: scale(1.05);
+}
+
+#idInfo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: orange;
+    font-size: 24px;
+}
+
+#idNavbar{
+    margin: 0;
+    background-color: blue;
+    font-size: 20px;
+}
+
+li{
+    padding: 10px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    color: gray;
+    list-style: none;
+}
+
+li:hover{
+    background-color: lightblue;
+    cursor: pointer;
+    color: black;
+}
+
+#idShop{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#idShop>* {
+  flex: 1 1 25%;
+}
+
+
+.article{
+    margin: 5px;
+    background-color: aquamarine;
+    text-align: center;
+    height: 600px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    transform: scale(1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    
+
+}
+
+.article:hover{
+    transform:  scale(1.05);
+    z-index: 100;
+    opacity: 1;
+}
+
+
+#idShop:hover .article {
+    opacity: 0.7;
+}
+
+/* Sauf celui qu’on survole */
+#idShop .article:hover {
+    opacity: 1;
+}
+
+.article>*{
+    flex: 1;
+}
+
+
+
+.img_article{
+    width: 100%;
+    height: 50%;
+}
+
+
+.article p{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    flex: initial;
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: initial;
+    margin-bottom: 10px;
+}
+
+
+.meilleur_ventes{
+    font-size: 32px;
+    font-weight: bold;
+    width: 100%;
+    text-align:center;
+}
+
+#btnRetourHaut{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+}
+
+#btnRetourHaut:hover{
+    opacity: 1.0;
+}
+
+
+footer{
+    margin-top: 100px;
+    height: 60px;
+    background-color: rgb(193, 192, 192);
+    text-align: center;
+    line-height: 60px;
+    font-size: 16px;
+}
+
+
+
+
+
