@@ -192,11 +192,51 @@ footer{
 
 #slider_panier{
     position: fixed;
-    background-color: aqua;
-    z-index: 50;
+    right: 0;
+    top: 50px;
+    background-color: rgb(213, 213, 213);
+    z-index: 100;
     height: 100%;
-    width: 100%;
+    width: 400px;
+    opacity: 95%;
+    transform: translateX(400px);
+    transition: transform 0.3s ease-out;
+    overflow: auto;
 }
 
+#panier_title{
+    text-align: center;
+    font-size: 30px;
+}
+
+.art_panier{
+    display: flex;
+    width: 90%;
+    height: 80px;
+    position: relative;
+    margin: 5%;
+    border-radius: 10px;
+    border: solid 2px black;
+    align-items: center;
+    justify-content: center;
+}
+
+.art_panier>*{
+    flex: 1;
+    margin: 10px;
+}
+
+.img_article_panier{
+    height: 80%;
+    width: 30%;
+    border: solid 1px gray;
+    border-radius: 10px;
+}
+
+.number_article_panier{
+    flex: initial;
+    font-size: 25px;
+    margin-right: 40px;
+}
 
 
