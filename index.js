@@ -9,7 +9,7 @@ var items= "";
 var panier = [];
 
 const articles = [
-    ["test", "singe.gif", 100],
+    ["SpeedyBee", "drone1.png", 100],
     ["test2", "singe.gif", 200],
     ["test3", "singe.gif", 300],
 
@@ -66,7 +66,6 @@ shop.addEventListener("click", (e) => {
     } else {
         panier.push([name_product, 1]);
     };
-    console.log(panier);
     objectsInPanier += 1;
     verifPanier();
     update_panier();
@@ -83,6 +82,7 @@ shop.addEventListener("click", (e) => {
 
 //Afficher panier dans le slider
 var items_panier = ""
+var btn_achat_html = "<button id='btn_achat'>Acheter</button>"
 function update_panier() {
     items_panier = ""
     if (panier.length > 0) {
@@ -93,15 +93,15 @@ function update_panier() {
                 };
             };
         };
-        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p>"+items_panier;
+        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p>"+items_panier+btn_achat_html;
     } else {
-        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p><p style='padding-top: 70%; color: white;'>Vous n'avez rien dans votre panier !</p>"
+        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p><p style='padding-top: 70%; color: white; text-align: center;'>Vous n'avez rien dans votre panier !</p>"
     }
 }
 
 function addItems_Panier(name, image, price, number) {
     var controls = "";
-    items_panier = items_panier+"<article class='art_panier'><img class='img_article_panier' src='/assets/"+image+"'></img><p class='name_panier'>"+name+"</p><p class='price_panier'>"+parseFloat(price)+"€</p><p class='number_article_panier'>"+number+"</p></article>"
+    items_panier = items_panier+"<article id='art_panier"+name+"' class='art_panier'><img class='img_article_panier' src='/assets/"+image+"'></img><p class='name_panier'>"+name+"</p><p class='price_panier'>"+parseFloat(price)+"€</p><p class='number_article_panier'>"+number+"</p><button id='suppr_article' class='suppr_article'>Suppr</button></article>"
 };
 
 //Afficher slider panier
@@ -119,6 +119,34 @@ button_panier.addEventListener("click", function(){
         update_panier()
     }
 });
+
+//Supprimer article du panier
+slider_panier.addEventListener("click", (e) => {
+  if (e.target.classList.contains("suppr_article")) {
+    name_product = e.target.parentElement.id.split("art_panier")[1];
+    console.log("Suppression de l'article : " + name_product);
+    for (let step =0; step <articles.length; step++){
+        if (articles[step][0] == name_product) {
+            var price = articles[step][2];
+            val_panier -= price;
+        };
+    };
+    for (let step =0; step <panier.length; step++){
+        if (panier[step][0] == name_product) {
+            if (panier[step][1] == 1){
+                panier.splice(step, 1);
+            } else {
+                panier[step][1] -= 1;
+            }
+        };
+    };
+    objectsInPanier -= 1;
+    verifPanier();
+    update_panier();
+  }
+});
+
+
 
 
 

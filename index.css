@@ -105,9 +105,9 @@ li:hover{
     flex-direction: column;
     transform: scale(1);
     transition: transform 0.3s ease, opacity 0.3s ease;
-    
-
+    cursor: pointer;
 }
+
 
 .article:hover{
     transform:  scale(1.05);
@@ -200,8 +200,12 @@ footer{
     width: 400px;
     opacity: 95%;
     transform: translateX(400px);
-    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
     overflow: auto;
+}
+
+#slider_panier:hover{
+    opacity: 100%;
 }
 
 #panier_title{
@@ -219,6 +223,14 @@ footer{
     border: solid 2px black;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transform: scale(1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.art_panier:hover{
+    background-color: rgb(200, 200, 200);
+    transform: scale(1.02);
 }
 
 .art_panier>*{
@@ -228,15 +240,59 @@ footer{
 
 .img_article_panier{
     height: 80%;
-    width: 30%;
+    max-width: 30%;
     border: solid 1px gray;
     border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .number_article_panier{
-    flex: initial;
     font-size: 25px;
-    margin-right: 40px;
 }
 
+.suppr_article{
+    flex: initial;
+    bottom: 5px;
+    right: 5px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: translateX(10px);
+    opacity: 0%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.suppr_article:hover{
+    background-color: darkred;
+}
+
+.art_panier:hover .suppr_article{
+    transform: translateX(-15px);
+    opacity: 100%;
+}
+
+#btn_achat{
+    width: 90%;
+    height: 50px;
+    margin: 5%;
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 60px;
+    transform: scale(1);
+    transition: background-color 0.3s ease, transform 0.3s ease
+}
+
+#btn_achat:hover{
+    background-color: darkgreen;
+    transform: scale(1.05);
+}
 
