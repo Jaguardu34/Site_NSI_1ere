@@ -14,6 +14,8 @@ const articles = [
 
 ];
 
+
+//Btn retour
 var buttonRetour = document.getElementById("buttonRetour");
 buttonRetour.addEventListener("click", function() {
     window.location.href = "index.html";

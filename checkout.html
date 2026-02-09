@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paiement</title>
+    <link rel="stylesheet" href="checkout.css">
 </head>
 <body>
     <header id="idHeader">
@@ -11,17 +12,26 @@
     </header>
     <main>
         <div id="container">
-            <div id="img"></div>
             <div id="infos">
-                <h1 id="name">--</h1>
                 <h2 id="price">--€</h2>
-                <p id="desc">--</p>
+                <div id="list_articles"></div>
+            </div>
+            <div id="payment">
+                <p id="name_payment">Paiement :</p>
+                <label for="inputName">Nom :</label>
+                <input type="text" id="inputName" placeholder="Nom">
+                <label for="inputEmail">Email :</label>
+                <input type="text" id="inputEmail" placeholder="Email">
+                <label for="inputCardNumber">Numéro de carte :</label>
+                <input type="text" id="inputCardNumber" placeholder="Numéro de carte">
+                <button id="btnPayer">Payer</button>
             </div>
         </div>
     </main>
+    <video autoplay muted loop><source src="assets/checkout_background.mp4" type="video/mp4"></video>
     <button id="buttonRetour">←</button>
     <footer id="idFooter">2026 Lucas Reutenauer Tout droits réservés</footer>
-    <script src="info_products.js" async defer></script>
+    <script src="checkout.js" async defer></script>
 
     
 </body>

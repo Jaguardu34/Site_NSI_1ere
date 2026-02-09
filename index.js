@@ -3,6 +3,7 @@ var shop = document.getElementById("idShop");
 var article = document.getElementsByTagName("article");
 var button_panier = document.getElementById("btnPanier");
 var slider_panier = document.getElementById("slider_panier");
+var body = document.getElementsByName("body");
 var objectsInPanier = 0;
 var val_panier = 0;
 var items= "";
@@ -44,7 +45,7 @@ function init(){
 //Creer une div pour article
 function addItems(name, image, price) {
     var controls = "";
-    controls = "<div class='controls'><button id='btn_acheter&"+name+"'>Acheter</button><button id='btn_ajt_panier&"+name+"'>Ajouter au panier</button></div>";
+    controls = "<div class='controls'><button id='btn_acheter&"+name+"'>Infos</button><button id='btn_ajt_panier&"+name+"'>Ajouter au panier</button></div>";
     items = items+"<article id='art_"+name+"' class='article'><p class='name'>"+name+"</p><img class='img_article' src='/assets/"+image+"'></img><p class='price'>"+parseFloat(price)+"€</p>"+controls+"</article>"
 };
 
@@ -90,16 +91,33 @@ shop.addEventListener("click", (e) => {
   }
 });
 
+//Quitter la slider panier quand clic autre part que le panier
+window.addEventListener("click", function(event) {
+    if (!slider_panier.contains(event.target) && event.target.id !== "btnPanier" && !event.target.classList.contains("suppr_article")) {
+        slider_panier.style.transform = "translateX(400px)";
+        state = false;
+        update_panier();
+    }
+});
 
-//Envoyer vers page achat
+
+//Envoyer vers page infos_produit depuis la boutique
 shop.addEventListener("click", (e) => {
   if (e.target.id.startsWith("btn_acheter&")) {
     window.location.href = "info_product.html?nom=" + e.target.id.split("&")[1];
     }
 });
 
+//Envoyer vers page achat depuis le panier
+slider_panier.addEventListener("click", (e) => {
+  if (e.target.id == "btn_achat") {
+    window.location.href = "checkout.html";
+    }
+});
+
 //Afficher panier dans le slider
 var items_panier = ""
+var total_price = "<p id='total_price'>--<p>"
 var btn_achat_html = "<button id='btn_achat'>Acheter</button>"
 function update_panier() {
     items_panier = ""
@@ -111,14 +129,13 @@ function update_panier() {
                 };
             };
         };
-        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p>"+items_panier+btn_achat_html;
+        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p>"+items_panier+btn_achat_html+"<p id='total_price'>Total: "+val_panier+" €</p>";
     } else {
         slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p><p style='padding-top: 70%; color: white; text-align: center;'>Vous n'avez rien dans votre panier !</p>"
     }
 }
 
 function addItems_Panier(name, image, price, number) {
-    var controls = "";
     items_panier = items_panier+"<article id='art_panier"+name+"' class='art_panier'><img class='img_article_panier' src='/assets/"+image+"'></img><p class='name_panier'>"+name+"</p><p class='price_panier'>"+parseFloat(price)+"€</p><p class='number_article_panier'>"+number+"</p><button id='suppr_article' class='suppr_article'>Suppr</button></article>"
 };
 
