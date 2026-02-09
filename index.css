@@ -310,3 +310,20 @@ footer{
     text-align: center;
 }
 
+#container_tableau{
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    font-size: 20px;
+}
+
+#tableau{
+    background-color: lightgray;
+}
+
+#name_tableau{
+    font-size: 30px;
+}
