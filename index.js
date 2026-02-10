@@ -10,11 +10,17 @@ var items= "";
 var panier = [];
 
 const articles = [
-    ["SpeedyBee", "drone1.png", 100],
-    ["test2", "singe.gif", 200],
-    ["test3", "singe.gif", 300],
-
+    ["SkyRaptor", "drone2.jpg", 350, "Le SkyRaptor est un drone de haute précision conçu pour les acrobaties et la vitesse. Son cadre léger et ses moteurs performants garantissent une maniabilité exceptionnelle pour tous les pilotes."],
+    ["AeroFalcon", "drone3.jpg", 420, "AeroFalcon combine puissance et autonomie. Parfait pour les vols longue distance et les prises de vue aériennes, il offre un contrôle précis même par vent fort."],
+    ["ThunderWing", "drone4.jpg", 280, "ThunderWing est un drone compact et rapide, idéal pour les courses et les manœuvres rapides. Son design moderne et ses fonctionnalités intuitives séduisent les débutants comme les experts."],
+    ["NimbusX", "drone5.jpg", 500, "NimbusX est équipé de la dernière technologie de stabilisation pour des vidéos fluides et des vols stables. Son autonomie prolongée en fait le compagnon idéal pour les explorateurs du ciel."],
+    ["VoltSky", "drone6.jpg", 320, "VoltSky est un drone agile et réactif, conçu pour les pilotes qui aiment la vitesse et les figures aériennes. Léger et robuste, il assure des performances exceptionnelles."],
+    ["FalconEye", "drone7.jpg", 450, "FalconEye est le choix parfait pour la photographie aérienne et la cartographie. Ses capteurs avancés et sa caméra HD permettent de capturer des images d'une clarté impressionnante."],
+    ["AeroPulse", "drone8.jpg", 370, "AeroPulse offre un excellent équilibre entre vitesse et maniabilité. Son design aérodynamique et ses contrôles intuitifs en font un drone très agréable à piloter."],
+    ["SkyViper", "drone9.jpg", 390, "SkyViper est conçu pour les courses et les acrobaties. Rapide et précis, il est idéal pour ceux qui veulent repousser leurs limites dans le ciel."],
 ];
+
+
 
 //json.stringify viens de chatgpt car local storage ne prend pas les tableau
 function savePanier() {
@@ -33,20 +39,42 @@ function loadPanier() {
     }
 }
 
+//update prix total
+function update_price() {
+
+    val_panier = 0;
+    if (panier.length > 0) {
+        for (let step = 0; step < panier.length; step++) {
+            const name = panier[step][0];
+            const quantity = panier[step][1];
+            for (let step = 0; step < articles.length; step++) {
+                if (name == articles[step][0]){
+                    val_panier += articles[step][2] * quantity
+                };
+            };
+            
+        };
+    };
+    savePanier();
+
+}
 
 //Charger les articles
 function init(){
     for (let step = 0; step < articles.length; step++) {
-        addItems(articles[step][0], articles[step][1], articles[step][2]);
+        if (articles[step][3] == undefined) {
+            articles[step][3] = "Aucune description disponible pour cet article.";
+        };
+        addItems(articles[step][0], articles[step][1], articles[step][2], articles[step][3]);
     };
     shop.innerHTML = items;
 };
 
 //Creer une div pour article
-function addItems(name, image, price) {
+function addItems(name, image, price, desc) {
     var controls = "";
     controls = "<div class='controls'><button id='btn_acheter&"+name+"'>Infos</button><button id='btn_ajt_panier&"+name+"'>Ajouter au panier</button></div>";
-    items = items+"<article id='art_"+name+"' class='article'><p class='name'>"+name+"</p><img class='img_article' src='/assets/"+image+"'></img><p class='price'>"+parseFloat(price)+"€</p>"+controls+"</article>"
+    items = items+"<article id='art_"+name+"' class='article'><p class='art_name'>"+name+"</p><img class='img_article' src='/assets/"+image+"'><p class='desc_article'>"+desc+"</p></img><p class='art_price'>"+parseFloat(price)+"€</p>"+controls+"</article>"
 };
 
 //Update nbre panier 
@@ -63,12 +91,6 @@ shop.addEventListener("click", (e) => {
   if (e.target.id.startsWith("btn_ajt_panier&")) {
     name_product = e.target.id.split("&")[1];
     console.log("Ajout au panier de : " + name_product);
-    for (let step =0; step <articles.length; step++){
-        if (articles[step][0] == name_product) {
-            var price = articles[step][2];
-            val_panier += price;
-        };
-    };
     let found = false;
     for (let step =0; step <panier.length; step++){
         if (panier[step][0] == name_product) {
@@ -85,9 +107,11 @@ shop.addEventListener("click", (e) => {
         panier.push([name_product, 1]);
     };
     objectsInPanier += 1;
+    update_price();
     verifPanier();
     update_panier();
     savePanier();
+    calc_nbr_art_panier();
   }
 });
 
@@ -131,7 +155,7 @@ function update_panier() {
         };
         slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p>"+items_panier+btn_achat_html+"<p id='total_price'>Total: "+val_panier+" €</p>";
     } else {
-        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p><p style='padding-top: 70%; color: white; text-align: center;'>Vous n'avez rien dans votre panier !</p>"
+        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p><p style='padding-top: 70%; color: white; text-align: center;'>Vous n'avez rien dans votre panier !</p>";
     }
 }
 
@@ -148,10 +172,12 @@ button_panier.addEventListener("click", function(){
         slider_panier.style.transform = "translateX(0)"
         state = true;
         update_panier()
+        calc_nbr_art_panier();
     } else {
         slider_panier.style.transform = "translateX(400px)"
         state = false;
         update_panier()
+        calc_nbr_art_panier();
     }
 });
 
@@ -159,13 +185,6 @@ button_panier.addEventListener("click", function(){
 slider_panier.addEventListener("click", (e) => {
   if (e.target.classList.contains("suppr_article")) {
     name_product = e.target.parentElement.id.split("art_panier")[1];
-    console.log("Suppression de l'article : " + name_product);
-    for (let step =0; step <articles.length; step++){
-        if (articles[step][0] == name_product) {
-            var price = articles[step][2];
-            val_panier -= price;
-        };
-    };
     for (let step =0; step <panier.length; step++){
         if (panier[step][0] == name_product) {
             if (panier[step][1] == 1){
@@ -176,11 +195,23 @@ slider_panier.addEventListener("click", (e) => {
         };
     };
     objectsInPanier -= 1;
+    update_price();
     verifPanier();
     update_panier();
     savePanier();
+    calc_nbr_art_panier();
   }
 });
+
+//update nbr_art_panier
+function calc_nbr_art_panier() {
+    loadPanier();
+    objectsInPanier = 0
+    for(let step = 0; step < panier.length; step++){
+        objectsInPanier += panier[step][1];
+    };
+    savePanier();
+};
 
 
 
@@ -189,8 +220,10 @@ slider_panier.addEventListener("click", (e) => {
 window.addEventListener("load", function() {
     loadPanier();
     init();
+    update_price();     
+    update_panier();    
     verifPanier();
-    update_panier();
+    calc_nbr_art_panier();
 }, false);
 
 
