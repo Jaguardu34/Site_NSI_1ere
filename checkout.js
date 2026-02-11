@@ -91,7 +91,7 @@ function update_price() {
 var controls = ""
 function addItems_checkout(name, image, price, number) {
     var controls = "<div class='controls' id='controls_"+name+"'><button class='minus'>-</button><p class='number'>"+number+"</p><button class='plus'>+</button></div>"
-    items_panier = items_panier+"<article id='art_checkout"+name+"' class='art_checkout'><img class='img_article_checkout' src='/assets/"+image+"'></img><p class='name_checkout'>"+name+"</p><p class='price_checkout'>"+parseFloat(price)+"€</p>"+controls+"</article>"
+    items_panier = items_panier+"<article id='art_checkout"+name+"' class='art_checkout glass'><img class='img_article_checkout' src='/assets/"+image+"'></img><p class='name_checkout'>"+name+"</p><p class='price_checkout'>"+parseFloat(price)+"€</p>"+controls+"</article>"
 };
 
 //ajouter/supprimer un article

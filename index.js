@@ -211,8 +211,6 @@ function calc_nbr_art_panier() {
 };
 
 
-
-
 //viens de https://www.vincent-vanneste.fr/views/javascript/co/chargement.html
 window.addEventListener("load", function() {
     loadPanier();

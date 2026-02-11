@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Infos</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="infos.css">
+    </head>
+    <body>
+        <header id="idHeader">
+            <p class="page_title">Drone Store</p>
+        </header>
+        <main>
+            <div id="title_div" class="glass">
+                <p id="title">Les Drones</p>
+                <p id="title_below">On vous vend des drones mais c'est quand même interessant de savoir d'ou ca vient 😀</p>
+            </div>
+            <p id="intro" class="glass">Les drones de loisir sont de petits aéronefs sans pilote, conçus pour le plaisir du vol et la capture d’images. On pourrait les voir comme des hélicoptères miniatures dopés à l’électronique moderne : des moteurs électriques, des hélices, une batterie lithium-ion, une carte électronique bardée de capteurs… et un pilote bien au chaud derrière une télécommande, parfois avec un smartphone comme tableau de bord.
+À l’intérieur, c’est un festival de physique appliquée. Des gyroscopes et accéléromètres (des capteurs qui mesurent les rotations et les accélérations) permettent au drone de rester stable. Un GPS lui donne une position précise. Certains modèles embarquent des capteurs optiques ou infrarouges pour éviter les obstacles. Tout cela travaille en permanence pour maintenir l’équilibre, corriger les rafales de vent et répondre aux commandes du pilote en quelques millisecondes. Ce qui ressemble à un jouet est en réalité un concentré d’ingénierie.
+Côté usages, les drones de loisir servent surtout à la prise de vue aérienne : photos panoramiques, vidéos en haute définition, plans cinématographiques fluides. Ils sont aussi utilisés pour le simple plaisir du pilotage, un peu comme l’aéromodélisme moderne. Certains amateurs pratiquent le “FPV” (First Person View), où l’on pilote en immersion grâce à des lunettes retransmettant la vue de la caméra embarquée. Sensations garanties, mais rigueur nécessaire.
+Car ces engins ne sont pas des gadgets anodins. Ils sont soumis à une réglementation précise : hauteur de vol limitée, interdiction de survoler des zones sensibles ou des foules, respect de la vie privée. La technologie permet de voler, mais la responsabilité permet de continuer à voler.
+Les drones de loisir incarnent une rencontre fascinante entre science, créativité et liberté. Ils rendent accessible ce qui relevait autrefois de l’aviation professionnelle : voir le monde d’en haut. Et regarder la Terre depuis quelques dizaines de mètres d’altitude suffit parfois à changer d’échelle… et de perspective.</p>
+            <div id="carroussel">
+                <p id="carroussel_title" class="glass">Voler plus haut</p>
+                <p id="carroussel_desc" class="glass">Aller par dela les nuages</p>
+                <video id="video" autoplay muted loop><source id="video_src" src="assets/checkout_background.mp4" type="video/mp4"></video>
+            </div>
+            <button onclick="update_carroussel_minus()">Gauche</button>
+            <button onclick="update_carroussel_plus()">Droite</button>
+        </main>
+        <button id="buttonRetour">←</button>
+        <footer id="idFooter">2026 Lucas Reutenauer Tout droits réservés</footer>
+        <img id="background_img" src="assets/background_infos.png" alt="background">
+        <script src="infos.js" async defer></script>
+    </body>
+</html>
