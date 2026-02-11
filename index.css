@@ -3,10 +3,12 @@ html {
     font-family: 'Courier New', Courier, monospace;
     width: 100%;
     height: 100%;
+
 }
 
 body{
     margin: 0;
+    
 }
 
 #idHeader{
@@ -69,7 +71,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: orange;
+    background-color: white;
     font-size: 24px;
     height: 800px;
     background-image: url(assets/index_background_1.jpg);

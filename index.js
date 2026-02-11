@@ -3,7 +3,7 @@ var shop = document.getElementById("idShop");
 var article = document.getElementsByTagName("article");
 var button_panier = document.getElementById("btnPanier");
 var slider_panier = document.getElementById("slider_panier");
-var body = document.getElementsByName("body");
+var body = document.body;
 var objectsInPanier = 0;
 var val_panier = 0;
 var items= "";
@@ -44,12 +44,12 @@ function update_price() {
 
     val_panier = 0;
     if (panier.length > 0) {
-        for (let step = 0; step < panier.length; step++) {
-            const name = panier[step][0];
-            const quantity = panier[step][1];
-            for (let step = 0; step < articles.length; step++) {
-                if (name == articles[step][0]){
-                    val_panier += articles[step][2] * quantity
+        for (let i = 0; i < panier.length; i++) {
+            const name = panier[i][0];
+            const quantity = panier[i][1];
+            for (let j = 0; j < articles.length; j++) {
+                if (name == articles[j][0]){
+                    val_panier += articles[j][2] * quantity
                 };
             };
             
@@ -74,13 +74,13 @@ function init(){
 function addItems(name, image, price, desc) {
     var controls = "";
     controls = "<div class='controls'><button id='btn_acheter&"+name+"'>Infos</button><button id='btn_ajt_panier&"+name+"'>Ajouter au panier</button></div>";
-    items = items+"<article id='art_"+name+"' class='article'><p class='art_name'>"+name+"</p><img class='img_article' src='/assets/"+image+"'><p class='desc_article'>"+desc+"</p></img><p class='art_price'>"+parseFloat(price)+"€</p>"+controls+"</article>"
+    items = items+"<article id='art_"+name+"' class='article'><p class='art_name'>"+name+"</p><img class='img_article' src='/assets/"+image+"'><p class='desc_article'>"+desc+"</p><p class='art_price'>"+parseFloat(price)+"€</p>"+controls+"</article>"
 };
 
 //Update nbre panier 
 function verifPanier() {
     if (objectsInPanier > 0) {
-        document.getElementById("btnPanier").innerHTML = "Panier (" + objectsInPanier + " articles)";
+        document.getElementById("btnPanier").innerHTML = "Panier: " + objectsInPanier;
     } else {
         document.getElementById("btnPanier").innerHTML = "Panier";
     }
@@ -89,8 +89,7 @@ function verifPanier() {
 //Ajouter au panier
 shop.addEventListener("click", (e) => {
   if (e.target.id.startsWith("btn_ajt_panier&")) {
-    name_product = e.target.id.split("&")[1];
-    console.log("Ajout au panier de : " + name_product);
+    let name_product = e.target.id.split("&")[1];
     let found = false;
     for (let step =0; step <panier.length; step++){
         if (panier[step][0] == name_product) {
@@ -160,14 +159,13 @@ function update_panier() {
 }
 
 function addItems_Panier(name, image, price, number) {
-    items_panier = items_panier+"<article id='art_panier"+name+"' class='art_panier'><img class='img_article_panier' src='/assets/"+image+"'></img><p class='name_panier'>"+name+"</p><p class='price_panier'>"+parseFloat(price)+"€</p><p class='number_article_panier'>"+number+"</p><button id='suppr_article' class='suppr_article'>Suppr</button></article>"
+    items_panier = items_panier+"<article id='art_panier"+name+"' class='art_panier'><img class='img_article_panier' src='/assets/"+image+"'></img><p class='name_panier'>"+name+"</p><p class='price_panier'>"+parseFloat(price)+"€</p><p class='number_article_panier'>"+number+"</p><button class='suppr_article'>Suppr</button></article>"
 };
 
 //Afficher slider panier
 
 var state = false
 button_panier.addEventListener("click", function(){
-    console.log(panier)
     if (state == false){
         slider_panier.style.transform = "translateX(0)"
         state = true;
@@ -184,7 +182,7 @@ button_panier.addEventListener("click", function(){
 //Supprimer article du panier
 slider_panier.addEventListener("click", (e) => {
   if (e.target.classList.contains("suppr_article")) {
-    name_product = e.target.parentElement.id.split("art_panier")[1];
+    let name_product = e.target.parentElement.id.split("art_panier")[1];
     for (let step =0; step <panier.length; step++){
         if (panier[step][0] == name_product) {
             if (panier[step][1] == 1){
@@ -205,7 +203,6 @@ slider_panier.addEventListener("click", (e) => {
 
 //update nbr_art_panier
 function calc_nbr_art_panier() {
-    loadPanier();
     objectsInPanier = 0
     for(let step = 0; step < panier.length; step++){
         objectsInPanier += panier[step][1];
