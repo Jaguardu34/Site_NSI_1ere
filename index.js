@@ -74,7 +74,7 @@ function init(){
 function addItems(name, image, price, desc) {
     var controls = "";
     controls = "<div class='controls'><button id='btn_acheter&"+name+"'>Infos</button><button id='btn_ajt_panier&"+name+"'>Ajouter au panier</button></div>";
-    items = items+"<article id='art_"+name+"' class='article'><p class='art_name'>"+name+"</p><img class='img_article' src='/assets/"+image+"'><p class='desc_article'>"+desc+"</p><p class='art_price'>"+parseFloat(price)+"€</p>"+controls+"</article>"
+    items = items+"<article id='art_"+name+"' class='article glass'><p class='art_name'>"+name+"</p><img class='img_article' src='/assets/"+image+"'><p class='desc_article glass'>"+desc+"</p><p class='art_price'>"+parseFloat(price)+"€</p>"+controls+"</article>"
 };
 
 //Update nbre panier 

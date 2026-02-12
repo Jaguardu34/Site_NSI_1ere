@@ -6,6 +6,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="infos.css">
+        <link rel="icon" href="assets/logo.png">
     </head>
     <body>
         <header id="idHeader">
@@ -21,17 +22,19 @@
 Côté usages, les drones de loisir servent surtout à la prise de vue aérienne : photos panoramiques, vidéos en haute définition, plans cinématographiques fluides. Ils sont aussi utilisés pour le simple plaisir du pilotage, un peu comme l’aéromodélisme moderne. Certains amateurs pratiquent le “FPV” (First Person View), où l’on pilote en immersion grâce à des lunettes retransmettant la vue de la caméra embarquée. Sensations garanties, mais rigueur nécessaire.
 Car ces engins ne sont pas des gadgets anodins. Ils sont soumis à une réglementation précise : hauteur de vol limitée, interdiction de survoler des zones sensibles ou des foules, respect de la vie privée. La technologie permet de voler, mais la responsabilité permet de continuer à voler.
 Les drones de loisir incarnent une rencontre fascinante entre science, créativité et liberté. Ils rendent accessible ce qui relevait autrefois de l’aviation professionnelle : voir le monde d’en haut. Et regarder la Terre depuis quelques dizaines de mètres d’altitude suffit parfois à changer d’échelle… et de perspective.</p>
-            <div id="carroussel">
-                <p id="carroussel_title" class="glass">Voler plus haut</p>
-                <p id="carroussel_desc" class="glass">Aller par dela les nuages</p>
-                <video id="video" autoplay muted loop><source id="video_src" src="assets/checkout_background.mp4" type="video/mp4"></video>
+            <div id="carroussel_container">
+                <button id="btn_carroussel_left" class="glass btn_carroussel" onclick="update_carroussel_minus()">←</button>
+                <button id="btn_carroussel_right" class="glass btn_carroussel" onclick="update_carroussel_plus()">→</button>
+                <div id="carroussel">
+                    <p id="carroussel_title" class="glass">Voler plus haut</p>
+                    <p id="carroussel_desc" class="glass">Aller par dela les nuages</p>
+                    <video id="video" autoplay muted loop><source id="video_src" src="assets/checkout_background.mp4" type="video/mp4"></video>
+                </div>
             </div>
-            <button onclick="update_carroussel_minus()">Gauche</button>
-            <button onclick="update_carroussel_plus()">Droite</button>
         </main>
         <button id="buttonRetour">←</button>
         <footer id="idFooter">2026 Lucas Reutenauer Tout droits réservés</footer>
-        <img id="background_img" src="assets/background_infos.png" alt="background">
+        <video id="background_video" autoplay loop muted><source src="assets/infos_background.mp4" type="video/mp4"></video>
         <script src="infos.js" async defer></script>
     </body>
 </html>

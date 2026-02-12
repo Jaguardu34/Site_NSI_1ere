@@ -100,6 +100,7 @@ container.addEventListener("click", (e) => {
     if (e.target.classList.contains("minus")) {
         name_product = e.target.parentElement.id.split("controls_")[1];
         if (panier.length === 1 && panier[0][1] === 1) {
+            panier = []
             window.location.href="index.html"
         } else {
             for (let step =0; step <panier.length; step++){
@@ -116,6 +117,7 @@ container.addEventListener("click", (e) => {
     if (e.target.classList.contains("plus")) {
         name_product = e.target.parentElement.id.split("controls_")[1];
         if (panier.length === 1 && panier[0][1] === 1) {
+            panier = []
             window.location.href="index.html"
         } else {
             for (let step =0; step <panier.length; step++){

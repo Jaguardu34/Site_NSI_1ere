@@ -16,11 +16,12 @@ body{
     top: 0;
     width: 100%;
     height: 60px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.5);
     position: fixed;
     font-size: 5vh;
     z-index: 1000;
     align-items: center;
+    backdrop-filter: blur(15px);
 }
 
 #topAnchor{
@@ -71,14 +72,19 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: white;
     font-size: 24px;
     height: 800px;
-    background-image: url(assets/index_background_1.jpg);
     background-position: center center;
     background-size: cover;
     margin: 0 5%;
     border-radius: 20px;
+    padding: 5%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#idInfo>h1{
+    font-size: 100px;
 }
 
 #idNavbar{
@@ -86,27 +92,29 @@ body{
     padding: 40px;
     font-size: 20px;
     border-radius: 20px;
-    /* https://grabient.com/HQVgzAHANKDsCcMQAYCMUC0rhldHs6GywATMvqvLDKajTgGxhSnCMQvKvDLwAsMXCCFoo2fqRFZQ8CEA?angle=225 */
 
-    background: linear-gradient(225deg, #abc8de 0.000%, #c7c9d8 16.667%, #e5cccf 33.333%, #ffd3c7 50.000%, #ffdbc2 66.667%, #ffe4c0 83.333%, #ffedc3 100.000%);
 }
 
-li{
+#idNavbar a{
+    text-decoration: none;
+}
+
+
+
+li, a{
     padding: 10px;
     transition: background-color 0.5s ease, color 0.5s ease;
-    color: gray;
+    color: rgb(255, 255, 255);
     list-style: none;
     text-align: center;
     border-radius: 20px;
 }
 
 li:hover{
-    /* https://grabient.com/HQVgzAHANKDsCcMQAYCMUC0rhldHs6GwATMvqvLDCatTgGxhQnAMTPIvDLwAsNNDDBDsfEiEyheQA?angle=225 */
-
-    background: linear-gradient(225deg, #8eaac1 0.000%, #aaabbb 16.667%, #c8afb2 33.333%, #e4b6aa 50.000%, #fdbea5 66.667%, #ffc7a3 83.333%, #ffd0a6 100.000%);
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    color: black;
 }
+
 
 #idShop{
     display: flex;
@@ -123,9 +131,7 @@ li:hover{
 
 .article{
     margin: 5px;
-    /* https://grabient.com/HQdgDAHANMDMEE4oEZgDYIhgJjV0YALCsMrMcNgmjGNTMmGLdtg0zOSEA?angle=225 */
 
-    background: linear-gradient(225deg, #f8f4ff 0.000%, #ede3e6 25.000%, #d5cfc7 50.000%, #b7b8af 75.000%, #989f9d 100.000%);
     text-align: center;
     height: 600px;
     border-radius: 10px;
@@ -191,9 +197,11 @@ li:hover{
 .meilleur_ventes{
     font-size: 32px;
     font-weight: bold;
-    width: 100%;
     text-align:center;
     color: lightcoral;
+    margin: 5% 40%;
+    padding: 40px;
+    border-radius: 20px;
 }
 
 .desc_article{
@@ -205,6 +213,9 @@ li:hover{
     position: absolute;
     left: 40px;
     right: 40px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
 }
 
 .article:hover .desc_article{
@@ -415,10 +426,12 @@ footer{
     text-align: center;
     /* https://grabient.com/HQDgrAzANMBsCcB2KBGYAGMsoFp3BXjBhXXRIgCZd8xEQbhKAWaPYK5d9CYjZrvkKUgA?angle=180 */
 
-    background: linear-gradient(180deg, #a9caff 0.000%, #b8cbff 16.667%, #d3cbff 33.333%, #f0c8f9 50.000%, #ffc5f1 66.667%, #ffc0ec 83.333%, #ffbaec 100.000%);
+    /* background: linear-gradient(180deg, #a9caff 0.000%, #b8cbff 16.667%, #d3cbff 33.333%, #f0c8f9 50.000%, #ffc5f1 66.667%, #ffc0ec 83.333%, #ffbaec 100.000%); */
     border-collapse: separate;
     border-spacing: 10px;
     border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background-color: rgba(217, 255, 0, 0.3);
 }
 
 #tableau td, th{
@@ -432,3 +445,24 @@ footer{
     font-size: 30px;
 }
 
+
+#background_img{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -10;
+    object-fit: cover;
+    height: 100vh;
+}
+
+.glass{
+    backdrop-filter: blur(15px);
+    border: solid rgba(255, 255, 255, 0.3) 1px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7); 
+    transition: box-shadow 0.5s ease;
+}
+
+.glass:hover{
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 1);
+}
