@@ -73,7 +73,7 @@ body{
     justify-content: center;
     flex-direction: column;
     font-size: 24px;
-    height: 800px;
+    height: 300px;
     background-position: center center;
     background-size: cover;
     margin: 0 5%;
@@ -90,7 +90,7 @@ body{
 #idNavbar{
     margin: 30px 10%;
     padding: 40px;
-    font-size: 20px;
+    font-size: 40px;
     border-radius: 20px;
 
 }
@@ -198,10 +198,11 @@ li:hover{
     font-size: 32px;
     font-weight: bold;
     text-align:center;
-    color: lightcoral;
+    color: black;
     margin: 5% 40%;
     padding: 40px;
     border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .desc_article{
