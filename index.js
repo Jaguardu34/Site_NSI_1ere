@@ -139,9 +139,9 @@ slider_panier.addEventListener("click", (e) => {
 });
 
 //Afficher panier dans le slider
-var items_panier = ""
-var total_price = "<p id='total_price'>--<p>"
-var btn_achat_html = "<button id='btn_achat'>Acheter</button>"
+var items_panier = "";
+var total_price = "<p id='total_price'>--<p>";
+var btn_achat_html = "<button id='btn_achat'>Acheter</button>";
 function update_panier() {
     items_panier = ""
     if (panier.length > 0) {
@@ -154,7 +154,7 @@ function update_panier() {
         };
         slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p>"+items_panier+btn_achat_html+"<p id='total_price'>Total: "+val_panier+" €</p>";
     } else {
-        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p><p style='padding-top: 70%; color: white; text-align: center;'>Vous n'avez rien dans votre panier !</p>";
+        slider_panier.innerHTML = "<p id='panier_title'>Votre Panier</p><p style='padding-top: 70%; color: black; text-align: center;'>Vous n'avez rien dans votre panier !</p>";
     }
 }
 

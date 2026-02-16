@@ -343,17 +343,18 @@ footer{
 
 
 .art_panier>*{
-    flex: 1;
     margin: 10px;
 }
 
 .img_article_panier{
+    width: 80px;
     height: 80%;
-    max-width: 30%;
+    object-fit: cover;
     border: solid 1px gray;
     border-radius: 10px;
     flex-shrink: 0;
 }
+
 
 .number_article_panier{
     font-size: 25px;

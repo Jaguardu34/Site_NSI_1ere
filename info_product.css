@@ -39,13 +39,19 @@ main{
 }
 
 
-.page_title{
+.page_title {
     margin: 0;
     padding: 0;
     left: 10px;
     top: 10px;;
     position: absolute;
     font-size: 40px;
+    
+}
+
+.page_title a {
+    text-decoration: none;
+    color: black;
 }
 
 #buttonRetour{

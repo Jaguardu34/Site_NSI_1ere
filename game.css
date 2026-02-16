@@ -1,0 +1,63 @@
+html{
+    scroll-behavior: smooth;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    height: 100%;
+}
+
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+footer{
+    position: absolute;
+    top: 100vh;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(193, 192, 192);
+    text-align: center;
+    line-height: 60px;
+    font-size: 16px;
+}
+
+main{
+    margin-top: 60px;
+    width: 100%;
+    height: auto;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+
+#idHeader{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    font-size: 5vh;
+    z-index: 1000;
+    align-items: center;
+}
+
+.page_title {
+    margin: 0;
+    padding: 0;
+    left: 10px;
+    top: 10px;;
+    position: absolute;
+    font-size: 40px;
+    
+}
+
+.page_title a {
+    text-decoration: none;
+    color: black;
+}

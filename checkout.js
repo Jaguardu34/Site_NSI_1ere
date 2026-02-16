@@ -126,12 +126,29 @@ container.addEventListener("click", (e) => {
                 };
             };   
         };
-    }
+    }oih
     update_price();
     savePanier();
     update_list_articles();
 
-})
+});
+
+var inputPrenom = document.getElementById("inputPrenom");
+var inputName = document.getElementById("inputName");
+var inputEmail = document.getElementById("inputEmail");
+var inputCardNumber = document.getElementById("inputCardNumber");
+
+function pay() {
+    if (inputPrenom.value == "" || inputName.value == "" || inputEmail.value == "" || inputCardNumber.value == "") {
+        alert("Veuillez remplir tous les champs pour procéder au paiement.");
+    } else {
+        alert("Merci pour votre achat, " + inputPrenom.value + " " + inputName.value + " !");
+        panier = [];
+        savePanier();
+        window.location.href = "index.html";
+    }
+
+}
 
 
 //viens de https://www.vincent-vanneste.fr/views/javascript/co/chargement.html

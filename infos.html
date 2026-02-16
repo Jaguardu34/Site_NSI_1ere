@@ -10,12 +10,14 @@
     </head>
     <body>
         <header id="idHeader">
-            <p class="page_title">Drone Store</p>
+            <p class="page_title"><a href="index.html">Drone Store</a></p>
         </header>
         <main>
+            <p id="balise_haut"></p>
             <div id="title_div" class="glass">
-                <p id="title">Les Drones</p>
-                <p id="title_below">On vous vend des drones mais c'est quand même interessant de savoir d'ou ca vient 😀</p>
+                <h1 id="title">Les Drones</h1>
+                <h2 id="title_below">On vous vend des drones mais c'est quand même interessant de savoir d'ou ca vient 😀</h2>
+                <a href="https://fr.wikipedia.org/wiki/Drone" id="link_wikipedia" target="_blank"><img src="assets/wikipedia.png" alt="Wikipedia" id="img_link_wikipedia"></a>
             </div>
             <p id="intro" class="glass">Les drones de loisir sont de petits aéronefs sans pilote, conçus pour le plaisir du vol et la capture d’images. On pourrait les voir comme des hélicoptères miniatures dopés à l’électronique moderne : des moteurs électriques, des hélices, une batterie lithium-ion, une carte électronique bardée de capteurs… et un pilote bien au chaud derrière une télécommande, parfois avec un smartphone comme tableau de bord.
 À l’intérieur, c’est un festival de physique appliquée. Des gyroscopes et accéléromètres (des capteurs qui mesurent les rotations et les accélérations) permettent au drone de rester stable. Un GPS lui donne une position précise. Certains modèles embarquent des capteurs optiques ou infrarouges pour éviter les obstacles. Tout cela travaille en permanence pour maintenir l’équilibre, corriger les rafales de vent et répondre aux commandes du pilote en quelques millisecondes. Ce qui ressemble à un jouet est en réalité un concentré d’ingénierie.
@@ -31,6 +33,9 @@ Les drones de loisir incarnent une rencontre fascinante entre science, créativi
                     <video id="video" autoplay muted loop><source id="video_src" src="assets/checkout_background.mp4" type="video/mp4"></video>
                 </div>
             </div>
+            <a href="#balise_haut">
+                <button id="btnRetourHaut" href="#idHeader">↑</button>
+            </a>
         </main>
         <button id="buttonRetour">←</button>
         <footer id="idFooter">2026 Lucas Reutenauer Tout droits réservés</footer>
