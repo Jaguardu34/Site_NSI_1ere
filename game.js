@@ -53,7 +53,7 @@ function render() {
         droneState.velocity.x = 0; 
     };
 
-    if (drone.position.x > area/2 || drone.position.x < -area/2 || drone.position.z > area/2 || drone.position.z < -area/2)) {
+    if (drone.position.x > area/2 || drone.position.x < -area/2 || drone.position.z > area/2 || drone.position.z < -area/2) {
         drone.position.set(0, -5, 20);
         droneState.velocity.set(0, 0, 0);
     }
