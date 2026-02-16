@@ -4,6 +4,8 @@ const HEIGHT = window.innerHeight;
 var area = 500;
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFShadowMap;
 renderer.setSize(WIDTH, HEIGHT);
 renderer.setClearColor(0xdddddd, 1);
 document.body.appendChild(renderer.domElement);
@@ -12,6 +14,7 @@ const scene = new THREE.Scene();
 
 const drone = new THREE.Object3D();
 drone.position.set(0, -5, 20);
+drone.castShadow = true;
 scene.add(drone);
 
 const camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 0.1, 1000);
@@ -19,17 +22,31 @@ camera.position.set(0, 2, 0);
 drone.add(camera);
 
 const boxGeometry = new THREE.BoxGeometry(10, 10, 10);
-const boxMaterial = new THREE.MeshNormalMaterial();
+const boxMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
 const cube = new THREE.Mesh(boxGeometry, boxMaterial);
+cube.castShadow = true;
 scene.add(cube);
 cube.rotation.y = Math.PI / 4;
 
 const planeGeometry = new THREE.PlaneGeometry(area, area);
-const planeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff50, side: THREE.DoubleSide });
+const planeMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff50 });
 const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.rotation.x = -Math.PI / 2;
 plane.position.y = -5;
+plane.receiveShadow = true
+plane.castShadow = true
 scene.add(plane);
+
+const spotLight = new THREE.SpotLight(0xF2F527, 5);
+spotLight.position.set(50, 200, 50);
+spotLight.castShadow = true;
+spotLight.shadow.mapSize.width = 1024;
+spotLight.shadow.mapSize.height = 1024;
+spotLight.shadow.camera.near = 0.5;
+spotLight.shadow.camera.far = 1000;
+scene.add(spotLight);
+scene.add(spotLight.target);
+
 
 const keys = {};
 window.addEventListener("keydown", (e) => keys[e.code] = true);
@@ -42,6 +59,9 @@ const droneState = {
 };
 const rotationSpeed = new THREE.Vector2(0, 0);
 const rotationAccel = 0.02;
+
+
+
 
 function render() {
     requestAnimationFrame(render);
