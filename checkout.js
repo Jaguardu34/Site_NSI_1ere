@@ -27,6 +27,7 @@ function loadPanier() {
     }
 }
 
+//enregistrer panier sur local storage
 function savePanier() {
     localStorage.setItem("panier", JSON.stringify(panier));
     localStorage.setItem("objectsInPanier", objectsInPanier);
@@ -50,7 +51,7 @@ function init() {
     update_price()
 };
 
-//update les divs des articles
+//update les divs des articleshttps://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/includes
 function update_list_articles() {
     items_panier = ""
     if (panier.length > 0) {
@@ -126,26 +127,43 @@ container.addEventListener("click", (e) => {
                 };
             };   
         };
-    }oih
+    };
     update_price();
     savePanier();
     update_list_articles();
 
 });
 
+
+//variables paiement
 var inputPrenom = document.getElementById("inputPrenom");
 var inputName = document.getElementById("inputName");
 var inputEmail = document.getElementById("inputEmail");
 var inputCardNumber = document.getElementById("inputCardNumber");
+var error = document.getElementById("error");
 
+
+//fonction de paiement
 function pay() {
+    let indexAt = inputEmail.value.indexOf("@");
+    let indexpoint = inputEmail.value.indexOf(".", indexAt)
+
     if (inputPrenom.value == "" || inputName.value == "" || inputEmail.value == "" || inputCardNumber.value == "") {
-        alert("Veuillez remplir tous les champs pour procéder au paiement.");
+        error.innerHTML = "Veuillez remplir tous les champs.";
+    
+    //verif email viens de https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf
+    } else if (indexAt != -1 && indexAt != 0 && indexAt != (inputEmail.value.length-1) && indexpoint != indexAt + 1 && indexpoint != (inputEmail.value.length-1)){
+        if (isNaN(inputCardNumber.value) || inputCardNumber.value.length != 16) {
+            error.innerHTML = "Veuillez entrer un numero de carte valide (16 chiffres)"
+        } else {
+            error.innerHTML = "";
+            alert("Merci pour votre achat, " + inputPrenom.value + " " + inputName.value + " !");
+            // panier = [];
+            // savePanier();
+            // window.location.href = "index.html";
+        };
     } else {
-        alert("Merci pour votre achat, " + inputPrenom.value + " " + inputName.value + " !");
-        panier = [];
-        savePanier();
-        window.location.href = "index.html";
+        error.innerHTML = "Veuillez rentrer un email valide";
     }
 
 }

@@ -221,6 +221,15 @@ window.addEventListener("load", function() {
     calc_nbr_art_panier();
 }, false);
 
+//viens de chatgpt pour reload avec redirection href
+document.addEventListener("DOMContentLoaded", function() {
+    loadPanier();
+    init();
+    update_price();
+    update_panier();
+    verifPanier();
+    calc_nbr_art_panier();
+});
 
 
 

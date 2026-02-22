@@ -58,12 +58,12 @@ body{
     cursor: pointer;
     border-radius: 10px;
     color: black;
-    background-color: yellowgreen;
+    background-color: lightgray;
     transform: scale(1);
     transition: transform 0.3s ease;
 }
 #btnPanier:hover{
-    background-color: greenyellow;
+    background-color: gray;
     transform: scale(1.05);
 }
 
@@ -131,7 +131,6 @@ li:hover{
 
 .article{
     margin: 5px;
-
     text-align: center;
     height: 600px;
     border-radius: 10px;
@@ -254,7 +253,7 @@ li:hover{
 
 .art_name{
     font-size: 40px;
-    color: #2d3888;
+    color: black;
 }
 
 .art_price{
@@ -329,7 +328,7 @@ footer{
     border-radius: 10px;
     border: solid 2px black;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     cursor: pointer;
     transform: scale(1);
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -347,7 +346,7 @@ footer{
 }
 
 .img_article_panier{
-    width: 80px;
+    width: 60px;
     height: 80%;
     object-fit: cover;
     border: solid 1px gray;
@@ -361,9 +360,6 @@ footer{
 }
 
 .suppr_article{
-    flex: initial;
-    bottom: 5px;
-    right: 5px;
     border: none;
     background-color: red;
     color: white;
@@ -371,19 +367,19 @@ footer{
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-    transform: translateX(10px);
-    opacity: 0%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .suppr_article:hover{
     background-color: darkred;
+    transform: translateY(-3px);
 }
 
-.art_panier:hover .suppr_article{
-    transform: translateX(-15px);
-    opacity: 100%;
+.name_panier{
+    overflow: auto;
+    width: 80px;
 }
+
 
 #btn_achat{
     width: 90%;
@@ -419,8 +415,7 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin: 0;
+    margin: 0 5%;
     font-size: 20px;
 }
 
